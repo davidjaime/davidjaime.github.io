@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<!--
+	Directive by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>@davidjaime</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<div id="header">
+
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+
+				<header class="major container medium">
+					<h2>HOWTOs</h2>
+				</header>
+
+				<div class="box container">
+					<section>
+						<header>
+							<h3>Persistencia y encriptación USB en Kali Linux</h3>
+						</header>
+						<p style="text-align:justify;">
+						Partimos de un pendrive en el que hemos instalado Kali linux live, y arrancamos en modo Live. Ha de quedar espacio
+						libre en el pendrive para crear una patición adicional.
+						Arrancado el sistema en Live, creamos una partición en el espacio libre (parted, cparted, etc.), supongamos de aquí ena delante que la nueva
+						partición es "sdb3".
+						</p>
+						<blockquote>
+							<p>
+							$ cryptsetup --verbose --verify-passphrase luksFormat /dev/sdb3<br>
+							$ cryptsetup luksOpen /dev/sdb3 my_usb<br>
+							$ mkfs.ext3 /dev/mapper/my_usb<br>
+							$ e2label /dev/mapper/my_usb persistence<br>
+							$ mkdir -p /mnt/my_usb<br>
+							$ mount /dev/mapper/my_usb /mnt/my_usb<br>
+							$ echo "/ union" > /mnt/my_usb/persistence.conf<br>
+							$ umount /dev/mapper/my_usb<br>
+							$ cryptsetup luksClose /dev/mapper/my_usb<br>
+							</p>
+						</blockquote>
+						<p style="text-align:justify;">Documentación original: <a href="https://www.kali.org/docs/usb/usb-persistence-encryption/">USB Persistence & Encrypted Persistence</a></p>
+						<hr />
+					</section>
+					<section>
+						<header>
+							<h3>Instalación módulo para RTL8812BU en Kali Linux</h3>
+						</header>
+						<blockquote>
+							<p>
+							$ cd rtl88x2bu<br>
+							$ VER=$(sed -n 's/\PACKAGE_VERSION="\(.*\)"/\1/p' dkms.conf)<br>
+							$ sudo rsync -rvhP ./ /usr/src/rtl88x2bu-${VER}<br>
+							$ sudo dkms add -m rtl88x2bu -v ${VER}<br>
+							$ sudo dkms build -m rtl88x2bu -v ${VER}<br>
+							$ sudo dkms install -m rtl88x2bu -v ${VER}<br>
+							$ sudo modprobe 88x2bu<br>
+							</p>
+						</blockquote>
+						<p style="text-align:justify;">Documentación original: <a href="https://github.com/cilynx/rtl88x2bu">Driver for rtl88x2bu wifi adaptors</a></p>
+						<hr />
+					</section>
+				</div>
+
+				<footer class="major container medium">
+					<h3>Hasta aquí...</h3>
+					<p>Si quieres seguir explorando el contenido puedes...</p>
+					<ul class="actions special">
+						<li><a href="index.html" class="button">Volver</a></li>
+					</ul>
+				</footer>
+
+			</div>
+
+		<!-- Footer -->
+			<div id="footer">
+				<div class="container medium">
+
+					<header class="major last">
+						<h2>Sígueme en las redes sociales</h2>
+					</header>
+
+					<p>Más contenido relacionado con los temas de interés en:</p>
+
+					<ul class="icons">
+						<li><a href="https://www.instagram.com/defiledj/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="https://davidjaime.github.io/" class="icon brands fa-github"><span class="label">Github</span></a></li>
+					</ul>
+
+					<ul class="copyright">
+						<li>&copy;davidjaime. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+				</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
