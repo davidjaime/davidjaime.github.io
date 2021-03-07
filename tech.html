@@ -4,7 +4,7 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html lang="es">
 	<head>
 		<title>@davidjaime</title>
 		<meta charset="utf-8" />
@@ -26,10 +26,14 @@
 				</header>
 
 				<div class="box container">
+					
 					<section>
+					<details>
+					<summary>
 						<header>
 							<h3>Persistencia y encriptación USB en Kali Linux</h3>
 						</header>
+					</summary>
 						<p style="text-align:justify;">
 						Partimos de un pendrive en el que hemos instalado Kali linux live, y arrancamos en modo Live. Ha de quedar espacio
 						libre en el pendrive para crear una patición adicional.
@@ -37,7 +41,7 @@
 						partición es "sdb3".
 						</p>
 						<blockquote>
-							<p>
+							<p lang="en" translate="no">
 							$ cryptsetup --verbose --verify-passphrase luksFormat /dev/sdb3<br>
 							$ cryptsetup luksOpen /dev/sdb3 my_usb<br>
 							$ mkfs.ext3 /dev/mapper/my_usb<br>
@@ -49,14 +53,19 @@
 							$ cryptsetup luksClose /dev/mapper/my_usb<br>
 							</p>
 						</blockquote>
-						<p style="text-align:justify;">Documentación original: <a href="https://www.kali.org/docs/usb/usb-persistence-encryption/">USB Persistence & Encrypted Persistence</a></p>
+						<p style="text-align:justify;">Documentación original: <a href="https://www.kali.org/docs/usb/usb-persistence-encryption/" lang="en" translate="no">USB Persistence & Encrypted Persistence</a></p>
 						<hr />
+					</details>
 					</section>
+					
 					<section>
+					<details>
+					<summary>
 						<header>
 							<h3>Instalación módulo para RTL8812BU en Kali Linux</h3>
 						</header>
-						<blockquote>
+					</summary>
+						<blockquote lang="en" translate="no">
 							<p>
 							$ cd rtl88x2bu<br>
 							$ VER=$(sed -n 's/\PACKAGE_VERSION="\(.*\)"/\1/p' dkms.conf)<br>
@@ -67,8 +76,9 @@
 							$ sudo modprobe 88x2bu<br>
 							</p>
 						</blockquote>
-						<p style="text-align:justify;">Documentación original: <a href="https://github.com/cilynx/rtl88x2bu">Driver for rtl88x2bu wifi adaptors</a></p>
+						<p style="text-align:justify;">Documentación original: <a href="https://github.com/cilynx/rtl88x2bu" lang="en" translate="no">Driver for rtl88x2bu wifi adaptors</a></p>
 						<hr />
+					</details>
 					</section>
 				</div>
 
