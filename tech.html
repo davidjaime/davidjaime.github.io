@@ -154,6 +154,18 @@
 							</p>
 						</blockquote>
 						<p style="text-align:justify;">
+							Una opción menos agresiva y directa, sobre todo si disponemos de dos tarjetas <i>Wifi</i> y queremos mantener la conexión de una de ellas sería esta:
+						</p>
+						<blockquote lang="en" translate="no">
+							<p>
+							$ sudo airmon-ng <br>
+							$ sudo ifconfig wlan1 down<br>
+							$ sudo macchanger -r wlan1<br>
+							$ sudo iwconfig wlan1 mode monitor<br>
+							$ sudo ifconfig wlan1 up<br>
+							</p>
+						</blockquote>
+						<p style="text-align:justify;">
 							Una vez la tenemos en modo <i>monitor</i>, buscamos el <i>AP</i> de la red que nos interesa. Nos interesa el <i>BSSID</i> y el canal.
 						</p>
 						<blockquote lang="en" translate="no">
@@ -205,6 +217,7 @@
 						<a href="https://byte-mind.net/cracking-de-wpa-wpa2-con-aircrack-ng/" lang="en" translate="no" target="_blank">Cracking de WPA/WPA2 con aircrack-ng</a><br>
 						<a href="https://www.aircrack-ng.org/doku.php?id=simple_wep_crack" lang="en" translate="no" target="_blank">Tutorial: Simple WEP Crack</a><br>
 						<a href="https://medium.com/@brannondorsey/crack-wpa-wpa2-wi-fi-routers-with-aircrack-ng-and-hashcat-a5a5d3ffea46" lang="en" translate="no" target="_blank">Crack WPA/WPA2 Wi-Fi Routers with Aircrack-ng and Hashcat</a><br>
+						<a href="https://hackingvision.com/2017/04/25/scanning-wireless-access-point-information-using-airodump-ng-kali-linux/" lang="en" translate="no" target="_blank">Scanning For Wireless Access Point Information Using Airodump-ng Kali Linux Tutorial</a><br>
 						</p>
 						<hr />
 					</details>
