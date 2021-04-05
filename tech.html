@@ -67,6 +67,7 @@
 					</summary>
 						<blockquote lang="en" translate="no">
 							<p>
+							$ git clone https://github.com/cilynx/rtl88x2bu<br>
 							$ cd rtl88x2bu<br>
 							$ VER=$(sed -n 's/\PACKAGE_VERSION="\(.*\)"/\1/p' dkms.conf)<br>
 							$ sudo rsync -rvhP ./ /usr/src/rtl88x2bu-${VER}<br>
@@ -356,8 +357,62 @@
 								$ kali-undercover
 								</p>
 							</blockquote>
-							<p style="text-align:justify;">Documentaci&oacute;n original:<br>
+							<p style="text-align:justify;">Documentaci&oacute;n original:
 							<a href="https://www.kali.org/docs/introduction/kali-undercover/" lang="en" translate="no" target="_blank">Kali Undercover</a>
+							</p>
+							<hr />
+						</details>
+					</section>	
+
+					<section>
+						<details>
+						<summary>
+							<header>
+								<h3>Firefox Fingerprinting tips</h3>
+							</header>
+						</summary>
+							<p style="text-align:justify;">
+							Ademas de las acciones que tomemos en relaci&ooacute;n con la IP o MAC que mostramos, hemos de prestarle atenci&ooacute;n a los datos que nuestro navegador proporciona sin que nosotros lo queramos.<br>
+							En funci&ooacute;n de los datos que no nos importe compartir y la funcionalidad del navegador que queramos mantener, podemos activar/desactivar caracteristicas o instalar o no diferentes extensiones.<br>
+							Podemos comprobar que informaci&oacute;n proporciona nuestro navegador consultando <a href="coveryourtracks.eff.org" lang="en" translate="no" target="_blank">Cover Your Tracks</a> o <a href="https://amiunique.org/" lang="en" translate="no" target="_blank">Am I Unique</a> o <a href="https://browserleaks.com" lang="en" translate="no" target="_blank">Browser Leaks</a>.
+							</p>
+							<p style="text-align:justify;">
+							<h4>Configuración de Firefox</h4>
+							<ul class="default">
+							<li>Idioma para mostrar: <strong>English (US)</strong> <i>(Menu > Options > General > Languages > Choose the languages used to display menus, messages, and notifications from Firefox)</i></li>
+							<li>Idioma por defecto: <strong>English (US)</strong> <i>(Menu > Options > General > Languages > Choose your preferred language for displaying pages)</i></li>
+							<li>Buscador por defecto: <strong>DuckDuckGo</strong> <i>(Menu > Options > Search > Default Search Engine)</i></li>
+							<li>Deshabilitar telemetria <i>(Menu > Options > Privacy & Security > Firefox Data Collection and Use)</i></li>
+							<li>Bloqueo de contenido: <strong>Strict</strong> <i>(Menu > Options > Privacy and Security > Content Blocking)</i></li>
+							<li>Do not Track: <strong>always</strong> <i>(Menu > Options > Privacy and Security > Content Blocking)</i></li>
+							<li>Cookies and site data: <strong>Delete cookies and site data when Firefox is closed</strong> <i>(Menu > Options > Privacy and Security > Content Blocking)</i></li>
+							<li>Logins and Passwords: Deshabilitado "Ask to save logins and passwords for websites" <i>(Menu > Options > Privacy and Security > Content Blocking)</i></li>
+							</ul>
+							<h4>Extensiones de Firefox</h4>
+							<ul class="default">
+							<li>Privacy Badger</li>
+							<li>Language Switch (EN default)</li>
+							<li>Spoof Timezone (GMT0)</li>
+							<li>User-Agent switcher</li>
+							<li>uBlock origin</li>
+							<li>NoScript</li>
+							</ul>
+							<h4>Configuración avanzada de Firefox "About:Config"</h4>
+							<ul class="default">
+							<li>privacy.resistFingerprinting : <strong>true</strong></li>
+							<li>webgl.disabled : <strong>true</strong></li>
+							<li>media.peerconnection.enabled : <strong>false</strong></li>
+							<li>geo.enabled : <strong>false</strong></li>
+							<li>privacy.firstparty.isolate: <strong>true</strong></li>
+							<li>media.navigator.enabled : <strong>false</strong></li>
+							<li>dom.event.clipboardevents.enabled : <strong>false</strong></li>
+							<li>network.cookie.lifetimePolicy : <strong>2</strong> <i>(0-3)</i></li>
+							</ul>
+							</p>
+							<p style="text-align:justify;">Documentaci&oacute;n original:<br>
+							<a href="https://restoreprivacy.com/firefox-privacy/" lang="en" translate="no" target="_blank">Firefox Privacy</a><br>
+							<a href="https://restoreprivacy.com/browser-fingerprinting/" lang="en" translate="no" target="_blank">Browser Fingerprinting</a><br>
+							<a href="https://www.bleepingcomputer.com/news/security/new-fingerprinting-techniques-identify-users-across-different-browsers-on-the-same-pc/" lang="en" translate="no" target="_blank">New fingerprinting techniques identify users across different browsers on the same PC</a>
 							</p>
 							<hr />
 						</details>
