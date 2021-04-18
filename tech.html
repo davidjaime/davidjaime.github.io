@@ -31,14 +31,14 @@
 					<details>
 					<summary>
 						<header>
-							<h3>Persistencia y encriptación USB en Kali Linux</h3>
+							<h3>Persistencia y encriptaci&oacute;n USB en Kali Linux</h3>
 						</header>
 					</summary>
 						<p style="text-align:justify;">
 						Partimos de un pendrive en el que hemos instalado Kali linux live, y arrancamos en modo Live. Ha de quedar espacio
-						libre en el pendrive para crear una patición adicional.
-						Arrancado el sistema en Live, creamos una partición en el espacio libre (parted, cparted, etc.), supongamos de aquí ena delante que la nueva
-						partición es "sdb3".
+						libre en el pendrive para crear una patici&oacute;n adicional.
+						Arrancado el sistema en Live, creamos una partici&oacute;n en el espacio libre (parted, cparted, etc.), supongamos de aqu&iacute; ena delante que la nueva
+						partici&oacute;n es "sdb3".
 						</p>
 						<blockquote>
 							<p lang="en" translate="no">
@@ -62,7 +62,7 @@
 					<details>
 					<summary>
 						<header>
-							<h3>Instalación módulo para RTL8812BU en Kali Linux</h3>
+							<h3>Instalaci&oacute;n m&oacute;dulo para RTL8812BU en Kali Linux</h3>
 						</header>
 					</summary>
 						<blockquote lang="en" translate="no">
@@ -99,7 +99,7 @@
 								</p>
 							</blockquote>
 							<p style="text-align:justify;">
-								Esto no es suficiente, ya que al intentar montarlo nos da un error de permisos. La solución es montar a mano:
+								Esto no es suficiente, ya que al intentar montarlo nos da un error de permisos. La soluci&oacute;n es montar a mano:
 							</p>
 							<blockquote>
 								<p lang="en" translate="no">
@@ -142,7 +142,7 @@
 						</header>
 					</summary>
 						<p style="text-align:justify;">
-							El primer paso es poner la tarjeta <i>Wifi</i> en modo monitor, y aconsejable cambiarle la <i>MAC</i>. Este proceso desconectará nuestra <i>Wifi</i> del <i>AP</i> donde esté conectada.
+							El primer paso es poner la tarjeta <i>Wifi</i> en modo monitor, y aconsejable cambiarle la <i>MAC</i>. Este proceso desconectar&aacute; nuestra <i>Wifi</i> del <i>AP</i> donde est&eacute; conectada.
 						</p>
 						<blockquote lang="en" translate="no">
 							<p>
@@ -156,7 +156,7 @@
 							</p>
 						</blockquote>
 						<p style="text-align:justify;">
-							Una opción menos agresiva y directa, sobre todo si disponemos de dos tarjetas <i>Wifi</i> y queremos mantener la conexión de una de ellas sería esta:
+							Una opci&oacute;n menos agresiva y directa, sobre todo si disponemos de dos tarjetas <i>Wifi</i> y queremos mantener la conexi&oacute;n de una de ellas ser&iacute;a esta:
 						</p>
 						<blockquote lang="en" translate="no">
 							<p>
@@ -176,7 +176,7 @@
 							</p>
 						</blockquote>
 						<p style="text-align:justify;">
-							Primero intentamos obtener el <i>PMKID</i> en modo pasivo. Tendremos que esperar hasta que un dispositivo de la <i>Wifi</i> objetivo se conecte o renueve su conexión.
+							Primero intentamos obtener el <i>PMKID</i> en modo pasivo. Tendremos que esperar hasta que un dispositivo de la <i>Wifi</i> objetivo se conecte o renueve su conexi&oacute;n.
 							En el ejemplo, el <i>BSSID</i> de la red es <i>XX:XX:XX:XX:XX:XX</i>, el canal es el <i>00</i> y generamos un archivo <i>pcapfile.cap</i>.
 						</p>
 						<blockquote lang="en" translate="no">
@@ -195,7 +195,7 @@
 							</p>
 						</blockquote>
 						<p style="text-align:justify;">
-							Cuando <i>aircrack-ng</i> haya obtenido el paquete <i>PMKID</i> lo marcará en la columna <i>Notes</i>. 
+							Cuando <i>aircrack-ng</i> haya obtenido el paquete <i>PMKID</i> lo marcar&aacute; en la columna <i>Notes</i>. 
 							Una vez conseguido, ya podemos cerrar <i>^C</i> la ventana de <i>airodump-ng</i> y recuperar nuestra <i>Wifi</i>.
 						</p>
 						<blockquote lang="en" translate="no">
@@ -205,7 +205,7 @@
 							</p>
 						</blockquote>
 						<p style="text-align:justify;">
-							Por último, solo falta obtener la contraseña. Esto lo podemos hacer usando <i>aircrack-ng</i> u otro <i>software</i>, como por ejemplo <i>hascat</i> (en este caso, habría que transformar el archivo <i>pcap</i> generado a <i>hccapx</i> usando <i>cap2hccapx</i>)
+							Por &uacute;ltimo, solo falta obtener la contrase&ntilde;a. Esto lo podemos hacer usando <i>aircrack-ng</i> u otro <i>software</i>, como por ejemplo <i>hascat</i> (en este caso, habr&iacute;a que transformar el archivo <i>pcap</i> generado a <i>hccapx</i> usando <i>cap2hccapx</i>)
 							Lo mas normal es probar un ataque de diccionario, antes de realizar uno de fuerza bruta.
 							En el ejemplo, usamos el diccionario <i>rockyou</i>, disponible por defecto en <i>Kali Linux</i> en <i>/usr/share/wordlists</i>, solo hay que descomprimirlo.
 						</p>
@@ -303,7 +303,7 @@
 							</header>
 						</summary>
 							<p style="text-align:justify;">
-							<a href="https://geti2p.net/en/about/intro" lang="en" translate="no" target="_blank">I2P (Invisible Internet Project)</a> es una red que añade una capa de red con encriptaci&oacute;n que nos proporciona tambi&eacute;n privacidad.
+							<a href="https://geti2p.net/en/about/intro" lang="en" translate="no" target="_blank">I2P (Invisible Internet Project)</a> es una red que a&ntilde;ade una capa de red con encriptaci&oacute;n que nos proporciona tambi&eacute;n privacidad.
 							</p>
 							<blockquote>
 								<p lang="en" translate="no">
@@ -312,7 +312,7 @@
 								</p>
 							</blockquote>
 							<p style="text-align:justify;">
-							Ahora disponemos de un servicio que nos proporcionará acceso a la red I2P:
+							Ahora disponemos de un servicio que nos proporcionar&aacute; acceso a la red I2P:
 							</p>
 							<blockquote>
 								<p lang="en" translate="no">
@@ -378,36 +378,36 @@
 							Podemos comprobar que informaci&oacute;n proporciona nuestro navegador consultando <a href="coveryourtracks.eff.org" lang="en" translate="no" target="_blank">Cover Your Tracks</a> o <a href="https://amiunique.org/" lang="en" translate="no" target="_blank">Am I Unique</a> o <a href="https://browserleaks.com" lang="en" translate="no" target="_blank">Browser Leaks</a>.
 							</p>
 							<p style="text-align:justify;">
-							<h4>Configuración de Firefox</h4>
+							<h4>Configuraci&oacute;n de Firefox</h4>
 							<ul class="default">
-							<li>Idioma para mostrar: <strong>English (US)</strong> <i>(Menu > Options > General > Languages > Choose the languages used to display menus, messages, and notifications from Firefox)</i></li>
-							<li>Idioma por defecto: <strong>English (US)</strong> <i>(Menu > Options > General > Languages > Choose your preferred language for displaying pages)</i></li>
-							<li>Buscador por defecto: <strong>DuckDuckGo</strong> <i>(Menu > Options > Search > Default Search Engine)</i></li>
-							<li>Deshabilitar telemetria <i>(Menu > Options > Privacy & Security > Firefox Data Collection and Use)</i></li>
-							<li>Bloqueo de contenido: <strong>Strict</strong> <i>(Menu > Options > Privacy and Security > Content Blocking)</i></li>
-							<li>Do not Track: <strong>always</strong> <i>(Menu > Options > Privacy and Security > Content Blocking)</i></li>
-							<li>Cookies and site data: <strong>Delete cookies and site data when Firefox is closed</strong> <i>(Menu > Options > Privacy and Security > Content Blocking)</i></li>
-							<li>Logins and Passwords: Deshabilitado "Ask to save logins and passwords for websites" <i>(Menu > Options > Privacy and Security > Content Blocking)</i></li>
+								<li>Idioma para mostrar: <strong>English (US)</strong> <i>(Menu > Options > General > Languages > Choose the languages used to display menus, messages, and notifications from Firefox)</i></li>
+								<li>Idioma por defecto: <strong>English (US)</strong> <i>(Menu > Options > General > Languages > Choose your preferred language for displaying pages)</i></li>
+								<li>Buscador por defecto: <strong>DuckDuckGo</strong> <i>(Menu > Options > Search > Default Search Engine)</i></li>
+								<li>Deshabilitar telemetria <i>(Menu > Options > Privacy & Security > Firefox Data Collection and Use)</i></li>
+								<li>Bloqueo de contenido: <strong>Strict</strong> <i>(Menu > Options > Privacy and Security > Content Blocking)</i></li>
+								<li>Do not Track: <strong>always</strong> <i>(Menu > Options > Privacy and Security > Content Blocking)</i></li>
+								<li>Cookies and site data: <strong>Delete cookies and site data when Firefox is closed</strong> <i>(Menu > Options > Privacy and Security > Content Blocking)</i></li>
+								<li>Logins and Passwords: Deshabilitado "Ask to save logins and passwords for websites" <i>(Menu > Options > Privacy and Security > Content Blocking)</i></li>
 							</ul>
 							<h4>Extensiones de Firefox</h4>
 							<ul class="default">
-							<li>Privacy Badger</li>
-							<li>Language Switch (EN default)</li>
-							<li>Spoof Timezone (GMT0)</li>
-							<li>User-Agent switcher</li>
-							<li>uBlock origin</li>
-							<li>NoScript</li>
+								<li>Privacy Badger</li>
+								<li>Language Switch (EN default)</li>
+								<li>Spoof Timezone (GMT0)</li>
+								<li>User-Agent switcher</li>
+								<li>uBlock origin</li>
+								<li>NoScript</li>
 							</ul>
-							<h4>Configuración avanzada de Firefox "About:Config"</h4>
+							<h4>Configuraci&oacute;n avanzada de Firefox "About:Config"</h4>
 							<ul class="default">
-							<li>privacy.resistFingerprinting : <strong>true</strong></li>
-							<li>webgl.disabled : <strong>true</strong></li>
-							<li>media.peerconnection.enabled : <strong>false</strong></li>
-							<li>geo.enabled : <strong>false</strong></li>
-							<li>privacy.firstparty.isolate: <strong>true</strong></li>
-							<li>media.navigator.enabled : <strong>false</strong></li>
-							<li>dom.event.clipboardevents.enabled : <strong>false</strong></li>
-							<li>network.cookie.lifetimePolicy : <strong>2</strong> <i>(0-3)</i></li>
+								<li>privacy.resistFingerprinting : <strong>true</strong></li>
+								<li>webgl.disabled : <strong>true</strong></li>
+								<li>media.peerconnection.enabled : <strong>false</strong></li>
+								<li>geo.enabled : <strong>false</strong></li>
+								<li>privacy.firstparty.isolate: <strong>true</strong></li>
+								<li>media.navigator.enabled : <strong>false</strong></li>
+								<li>dom.event.clipboardevents.enabled : <strong>false</strong></li>
+								<li>network.cookie.lifetimePolicy : <strong>2</strong> <i>(0-3)</i></li>
 							</ul>
 							</p>
 							<p style="text-align:justify;">Documentaci&oacute;n original:<br>
@@ -419,10 +419,92 @@
 						</details>
 					</section>	
 
+					<section>
+						<details>
+						<summary>
+							<header>
+								<h3>Recopilaci&oacute;n pasiva de informaci&oacute;n: Google Dorks</h3>
+							</header>
+						</summary>
+							<p style="text-align:justify;">
+							<h4>Operadores de b&uacute;squeda de Google. Google Dorks.</h4>
+							<ul class="default" lang="en" translate="no">
+								<li><i>Comillas " ".</i> Busca las palabras exactas.</li>
+								<li><i>Gui&oacute;n -.</i> Excluye una palabra de la b&uacute;squeda.</li>
+								<li><i>OR (&oacute; |).</i> Busca p&aacute;ginas que contengan un t&eacute;rmino.</li>
+								<li><i>+.</i> Permite incluir palabras que Google por defecto no tiene en cuenta al ser muy comunes.</li>
+								<li><i>*.</i> Comod&iacute;n.</li>
+								<li><i>define:<strong>valor</strong>.</i> Se muestran definiciones para el valor buscado.</li>
+								<li><i>filetype:<strong>valor</strong>.</i> Se busca tipos de ficheros seg&uacute;n el valor proporcionado.</li>
+								<li><i>site:<strong>sitio/dominio</strong>.</i> La b&uacute;squeda se circunscribe al sitio/dominio proporcionado.</li>
+								<li><i>link:<strong>url</strong>.</i> Busca las p&aacute;ginas que apuntan a dicha url.</li>
+								<li><i>cache:<strong>url</strong>.</i> Se busca en la cache de Google.</li>
+								<li><i>info:<strong>url</strong>.</i> Muestra informaci&oacute;n de la url.</li>
+								<li><i>related:<strong>url</strong>.</i> Se buscan p&aacute;ginas similares a la url.</li>
+								<li><i>allinanchor:<strong>valores</strong>.</i> Se muestra aquellas p&aacute;ginas apuntadas por enlaces donde el texto contiene el valor/es.</li>
+								<li><i>inanchor:<strong>valor</strong>.</i> Se muestra aquellas p&aacute;ginas apuntadas por enlaces donde el texto contiene el valor/es, pudi&eacute;ndose combinar con la b&uacute;squeda habitual.</li>
+								<li><i>allintext:<strong>valores</strong>.</i> La b&uacute;squeda proporciona resultados que contienen los valores en el texto de la p&aacute;gina.</li>
+								<li><i>intext:<strong>valor</strong>.</i> La b&uacute;squeda proporciona resultados que contienen los valores en el texto de la p&aacute;gina, pudi&eacute;ndose combinar con la b&uacute;squeda habitual.</li>
+								<li><i>allinurl:<strong>valores</strong>.</i> S&oacute;lo se presentan los resultados que contienen los valores buscados en la url.</li>
+								<li><i>inurl:<strong>valor</strong>.</i> S&oacute;lo se presentan los resultados que contienen los valores buscados en la url, pudi&eacute;ndose combinar con la b&uacute;squeda habitual.</li>
+								<li><i>allintitle:<strong>valores</strong>.</i> Muestra los resultados que contienen los valores en el t&iacute;tulo.</li>
+								<li><i>intitle:<strong>valor</strong>.</i> Muestra los resultados que contienen los valores en el t&iacute;tulo, pudi&eacute;ndose combinar con la b&uacute;squeda habitual.</li>
+							</ul>
+							</p>
+							<p style="text-align:justify;">Documentaci&oacute;n original:
+							<a href="https://gbhackers.com/latest-google-dorks-list/" lang="en" translate="no" target="_blank">Complete Google Dorks List in 2020 For Ethical Hacking and Penetration Testing</a>
+							</p>
+							<hr />
+						</details>
+					</section>	
+					
+					<section>
+						<details>
+						<summary>
+							<header>
+								<h3>Recopilaci&oacute;n pasiva de informaci&oacute;n: filtros Shodan</h3>
+							</header>
+						</summary>
+							<p style="text-align:justify;">
+							<h4>Lista de filtros Shodan relevantes</h4>
+							<ul class="default" lang="en" translate="no">
+								<li><i>after.</i> Solo muestra los resultados despu&eacute;s de la fecha proporcionada (dd/mm/yyyy)</li>
+								<li><i>asn.</i> Cadena ASN (Autonomous System Number)</li>
+								<li><i>before.</i> Solo muestra los resultados antes de la fecha proporcionada (dd/mm/yyyy</li>
+								<li><i>category.</i> Categorias disponibles:</i> ics, malwarestring</li>
+								<li><i>city.</i> Nombre de ciudad</li>
+								<li><i>country.</i> C&oacute;digo de pa&iacute;s de 2 caracteres</li>
+								<li><i>geo.</i> Acepta de 2 a 4 valores. 2 valores:</i> latitud, longitud. 3 valores:</i> latitud, longitud, rango. 4 valores:</i> latitud superior izquierda, longitud superior izquierda, latitud inferior derecha, longitud inferior derecha.</li>
+								<li><i>hash.</i> Hash del entero de la propiedad de la fecha/li>
+								<li><i>has_ipv6.</i> True/False</li>
+								<li><i>has_screenshot.</i> True/False</li>
+								<li><i>server.</i> Dispositivos o sevidores con un identificador de cabecera determinado</li>
+								<li><i>hostname.</i> Host name completo</li>
+								<li><i>ip.</i> Alias para el filtro de red</li>
+								<li><i>isp.</i> ISP</li>
+								<li><i>net.</i> Rango de red en formato CIDR (ex.199.4.1.0/24)</li>
+								<li><i>org.</i> Organizaci&oacute;n</li>
+								<li><i>os.</i> Sistema operativo</li>
+								<li><i>port.</i> Puerto</li>
+								<li><i>postal.</i> C&oacute;digo postal (solo USA)</li>
+								<li><i>product.</i> Nombre del producto en el banner</li>
+								<li><i>region.</i> Regi&oacute;n</li>
+								<li><i>state.</i> Estado</li>
+								<li><i>version.</i> Version</li>
+								<li><i>vuln.</i></i> ID del CVE para la vulnerabilidad</li>
+							</ul>
+							</p>
+							<p style="text-align:justify;">Documentaci&oacute;n original:
+							<a href="https://beta.shodan.io/search/filters" lang="en" translate="no" target="_blank">Shodan Search Filter Reference</a>
+							</p>
+							<hr />
+						</details>
+					</section>	
+
 				</div>
 
 				<footer class="major container medium">
-					<h3>Hasta aquí...</h3>
+					<h3>Hasta aqu&iacute;...</h3>
 					<p>Si quieres seguir explorando el contenido puedes...</p>
 					<ul class="actions special">
 						<li><a href="index.html" class="button">Volver</a></li>
@@ -436,10 +518,10 @@
 				<div class="container medium">
 
 					<header class="major last">
-						<h2>Sígueme en las redes sociales</h2>
+						<h2>S&iacute;gueme en las redes sociales</h2>
 					</header>
 
-					<p>Más contenido relacionado con los temas de interés en:</p>
+					<p>M&aacute;s contenido relacionado con los temas de inter&eacute;s en:</p>
 
 					<ul class="icons">
 						<li><a href="https://www.instagram.com/defiledj/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
