@@ -326,6 +326,95 @@
 						<details>
 						<summary>
 							<header>
+								<h3>Activar Tor control port. <i>Tor Nyx</i></h3>
+							</header>
+						</summary>
+							<p style="text-align:justify;">
+							El <i>Tor control port</i> es interesante tenerlo activado ya que, entre otras cosas, permite recopilar informaci&oacute;n sobre el estado de la red Tor y controlar maualmente los circuitos Tor.
+							Tambi&eacute;n permite usar librerias como <i>Stem</i> de <i>Python</i> para crear <i>scripts</i> y automatizar tareas. Para activar el <i>control port</i> hacemos lo siguiente:
+							</p>
+							<blockquote>
+								<p lang="en" translate="no">
+								$ torpass=$(tor --hash-password "mypass") <br>
+								$ printf "HashedControlPassword $torpass\nControlPort 9051\n" | sudo tee -a /etc/tor/torrc <br>
+								$ tail -2 /etc/tor/torrc <br>
+								$ sudo systemctl restart tor <br>
+								</p>
+							</blockquote>
+							<p style="text-align:justify;">
+							Ahora, para comprobar, podemos ver que el comando <i>ss</i> nos devuelve un nuevo puerto, el 9051 en este caso.
+							</p>
+							<blockquote>
+								<p lang="en" translate="no">
+								$ ss -lt
+								</p>
+							</blockquote>
+							<p style="text-align:justify;">
+							Para usar este puerto, lo primero que hemos de hacer es autenticarnos con la contrase&ntilde;a que hemos escogido, y luego enviar el comando deseado, todo esto por <i>Telnet</i> o similar.
+							Por ejemplo, podemos probar a solicitar un nuevo circuito Tor de forma manual con el comando <i>SIGNAL NEWNYM</i>:
+							</p>
+							<blockquote>
+								<p lang="en" translate="no">
+								$ telnet 127.0.0.1 9051 <br>
+								<span style="margin-left:2em">Trying 127.0.0.1...<br></span>
+								<span style="margin-left:2em">Connected to 127.0.0.1.<br></span>
+								<span style="margin-left:2em">Escape character is '^]'.<br></span>
+								<span style="margin-left:2em"><b>AUTHENTICATE "mypass"</b><br></span>
+								<span style="margin-left:2em">250 OK<br></span>
+								<span style="margin-left:2em"><b>SIGNAL NEWNYM</b><br></span>
+								<span style="margin-left:2em">250 OK<br></span>
+								<span style="margin-left:2em">quit<br></span>
+								<span style="margin-left:2em">250 closing connection<br></span>
+								<span style="margin-left:2em">Connection closed by foreign host.</span>
+								</p>
+							</blockquote>
+							<p style="text-align:justify;">
+							Pero esto es muy tedioso. Existe una herramienta propia para esto, <i>tor-prompt</i> que se instala con el paquete <i>tor</i>.
+							Es una herramienta que de forma autom&aacute;tica usa la librer&iacute;a <i>Stem</i> usando un int&eacute;rprete Python y puede se usar de forma interactiva o pasarle argumentos.
+							Por ejemplo, para extraer un listado de los circuitos que existen en este momento (Ojo con el tabulador de la segunda linea, y el salto de linea de la &uacute;ltima):
+							</p>
+							<blockquote>
+								<p lang="en" translate="no">
+								$ tor-prompt --interface 9051<br>
+								>>> <b>for circuito in controller.get_circuits():</b><br>
+								...   <b>print ("circuito %s, estado: %s" % (circuito.id, circuito.status))</b><br>
+								... <br>
+								circuito 21, estado: BUILT<br>
+								circuito 18, estado: BUILT<br>
+								circuito 17, estado: BUILT<br>
+								circuito 16, estado: BUILT<br>
+								circuito 15, estado: BUILT<br>
+								circuito 14, estado: BUILT<br>
+								circuito 20, estado: BUILT<br>
+								circuito 19, estado: BUILT<br>
+								circuito 22, estado: BUILT<br>
+								circuito 23, estado: BUILT<br>
+								</p>
+							</blockquote>
+							<p style="text-align:justify;">
+							Tambi&eacute;n podemos usar la herramienta <i>Nyx</i> para monitorizar el tr&aacute;fico de la red Tor en nuestra m&aacute;quina en tiempo real.
+							</p>
+							<blockquote>
+								<p lang="en" translate="no">
+								$ sudo apt install nyx
+								</p>
+							</blockquote>
+							<p style="text-align:justify;">
+							La herramienta <i>Nyx</i> nos permite tambi&eacute;n comprobar los valores del archivo de configuración de Tor y usar un int&eacute;rprete para el puerto de control de Tor (<i>interface</i> de <i>tor-prompt</i>), entre otras opciones.
+							</p>
+							<p style="text-align:justify;">Documentaci&oacute;n original:<br>
+							<a href="https://www.linux.com/topic/networking/beginners-guide-tor-ubuntu/" lang="en" translate="no" target="_blank">Beginner’s Guide to Tor on Ubuntu</a><br>
+							<a href="https://gitweb.torproject.org/torspec.git/tree/control-spec.txt#n415" lang="en" translate="no" target="_blank">TC: A Tor control protocol (Version 1)</a><br>
+							<a href="https://stem.torproject.org/tutorials/down_the_rabbit_hole.html" lang="en" translate="no" target="_blank">Down the Rabbit Hole</a><br>
+							<a href="https://nyx.torproject.org/" lang="en" translate="no" target="_blank">Tor Nyx</a>
+							</p>
+							<hr />
+						</details>
+					</section>	
+					<section>
+						<details>
+						<summary>
+							<header>
 								<h3>Navegaci&oacute;n an&oacute;nima: <i>kali-anonstealth</i></h3>
 							</header>
 						</summary>
