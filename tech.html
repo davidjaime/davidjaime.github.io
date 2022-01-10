@@ -185,6 +185,17 @@
 							</p>
 						</blockquote>
 						<p style="text-align:justify;">
+							Tambi&eacute;n podemos poner a escuchar "a lo bruto", incluso en 5GHz, abrir el archivo <i>pcap</i> que se est&aacute; generado con <i>aircrack-ng</i> para ver si encontramos alg&uacute;n <i>BSSID</i> interesante
+							y luego usando <i>tshark</i> filtrar el archivo generado por <i>airodump</i> y generar un archivo <i>pcap</i> espec&iacute;fico.
+							En el ejemplo, el <i>BSSID</i> de la red es <i>XX:XX:XX:XX:XX:XX</i>, el canal es el <i>00</i> y generamos un archivo <i>XX-XX-XX-XX-XX-XX.pcap</i>.
+						</p>
+						<blockquote lang="en" translate="no">
+							<p>
+							$ sudo sudo airodump-ng -b abg --manufacturer --uptime --wps -f 2000 -w /tmp/wps wlan1 & <br>
+							$ tshark -r /tmp/wps-1.cap -Y "wlan.addr==XX:XX:XX:XX:XX:XX" -w XX-XX-XX-XX-XX-XX.pcap -F pcap <br>
+							</p>
+						</blockquote>
+						<p style="text-align:justify;">
 							Si no queremos esperar, podemos forzar la captura inyectando paquetes y desconectando un cliente de la red. 
 							Para ello, hemos de abrir otra terminal mientras mantenemos la anterior escuchando y ha de haberse visualizado un cliente conectado a la red <i>Wifi</i> objetivo.
 							En el ejemplo, la <i>MAC</i> del dispositivo cliente es <i>YY:YY:YY:YY:YY:YY</i>.
@@ -238,7 +249,7 @@
 							<blockquote>
 								<p lang="en" translate="no">
 								$ sudo apt update<br>
-								$ sudo apt install -y tor torbrowser-launcher
+								$ sudo apt install -y torbrowser-launcher
 								</p>
 							</blockquote>
 							<p style="text-align:justify;">
@@ -246,7 +257,7 @@
 							</p>
 							<blockquote>
 								<p lang="en" translate="no">
-								$ torbrowser-launcher<br>
+								$ torbrowser-launcher
 								</p>
 							</blockquote>
 	
@@ -260,11 +271,66 @@
 						<details>
 						<summary>
 							<header>
-								<h3>Navegaci&oacute;n an&oacute;nima: kali-anonstealth</h3>
+								<h3>Navegaci&oacute;n an&oacute;nima: red <i>proxy</i> Tor en Kali.</h3>
 							</header>
 						</summary>
 							<p style="text-align:justify;">
-							A diferencia del m&eacute;todo anterior, el objetivo es que todo el tr&aacute;fico generado pase por la red Tor.
+							Aunque la manera m&aacute;s f&aacute;cil de navegar por internet es usar <i>Tor-Browser</i>,  podemos instalar el servicio Tor para ir m&aacute;s all&aacute;.<br>
+							
+							</p>
+							<blockquote>
+								<p lang="en" translate="no">
+								$ sudo apt update<br>
+								$ sudo apt install -y tor
+								</p>
+							</blockquote>
+							<p style="text-align:justify;">
+							Comprobamos que todo est&aacute; bien instalado. Con <i>ss</i> hemos de comprobar que tenemos el puerto 9050 abierto:
+							</p>
+							<blockquote>
+								<p lang="en" translate="no">
+								$ systemctl status tor<br>
+								$ tor --version<br>
+								$ ss -lt
+								</p>
+							</blockquote>
+							<p style="text-align:justify;">
+							Personalmente, no me gusta que el servicio de tor se arranque en el inicio. Para evitar que esto ocurra:
+							</p>
+							<blockquote>
+								<p lang="en" translate="no">
+								$ sudo systemctl disable tor
+								</p>
+							</blockquote>
+							<p style="text-align:justify;">
+							Para iniciar el servicio de forma manual, y comprobar que el servicio ha arrancado correctamente:
+							</p>
+							<blockquote>
+								<p lang="en" translate="no">
+								$ sudo systemctl start tor<br>
+								$ ss -lt
+								</p>
+							</blockquote>
+							<p style="text-align:justify;">
+							Para navegar, solo hemos de configurar nuestro navegador favorito para que use el puerto 9050 como <i>SOCKS proxy</i> V5.<br>
+							<b>OJO!</b> A nivel de privacidad, no es lo mismo usar <i>Tor-browser</i> que nuestro navegador favorito con el servicio Tor. 
+							<i>Tor-browser</i> es una versi&oacute;n modificada de <i>Firefox</i> y adaptada espec&iacute;ficamente para la navegaci&oacute;n por la red Tor, por lo que su uso es aconsejado.<br>
+							</p>
+							<p style="text-align:justify;">Documentaci&oacute;n original:
+							<a href="https://www.kali.org/docs/tools/tor/" lang="en" translate="no" target="_blank">Installing Tor Browser on Kali Linux</a></p>
+							<hr />
+						</details>
+					</section>	
+
+					<section>
+						<details>
+						<summary>
+							<header>
+								<h3>Navegaci&oacute;n an&oacute;nima: <i>kali-anonstealth</i></h3>
+							</header>
+						</summary>
+							<p style="text-align:justify;">
+							El objetivo es que todo el tr&aacute;fico generado pase por la red Tor.
 							</p>
 							<blockquote>
 								<p lang="en" translate="no">
@@ -339,7 +405,7 @@
 						<details>
 						<summary>
 							<header>
-								<h3>Ocultar Kali como Windows: kali-undercover</h3>
+								<h3>Ocultar Kali como Windows: <i>kali-undercover</i></h3>
 							</header>
 						</summary>
 							<p style="text-align:justify;">
@@ -474,8 +540,8 @@
 								<li><i>category.</i> Categorias disponibles:</i> ics, malwarestring</li>
 								<li><i>city.</i> Nombre de ciudad</li>
 								<li><i>country.</i> C&oacute;digo de pa&iacute;s de 2 caracteres</li>
-								<li><i>geo.</i> Acepta de 2 a 4 valores. 2 valores:</i> latitud, longitud. 3 valores:</i> latitud, longitud, rango. 4 valores:</i> latitud superior izquierda, longitud superior izquierda, latitud inferior derecha, longitud inferior derecha.</li>
-								<li><i>hash.</i> Hash del entero de la propiedad de la fecha/li>
+								<li><i>geo.</i> Acepta de 2 a 4 valores. 2 valores: latitud, longitud. 3 valores: latitud, longitud, rango. 4 valores: latitud superior izquierda, longitud superior izquierda, latitud inferior derecha, longitud inferior derecha.</li>
+								<li><i>hash.</i> Hash del entero de la propiedad de la fecha.</li>
 								<li><i>has_ipv6.</i> True/False</li>
 								<li><i>has_screenshot.</i> True/False</li>
 								<li><i>server.</i> Dispositivos o sevidores con un identificador de cabecera determinado</li>
@@ -491,7 +557,7 @@
 								<li><i>region.</i> Regi&oacute;n</li>
 								<li><i>state.</i> Estado</li>
 								<li><i>version.</i> Version</li>
-								<li><i>vuln.</i></i> ID del CVE para la vulnerabilidad</li>
+								<li><i>vuln.</i> ID del CVE para la vulnerabilidad</li>
 							</ul>
 							</p>
 							<p style="text-align:justify;">Documentaci&oacute;n original:
